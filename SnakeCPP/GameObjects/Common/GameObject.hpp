@@ -15,22 +15,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- * Constants.hpp
+ * GameObject.hpp
  */
 
-#ifndef CONSTANTS_HPP
-#define CONSTANTS_HPP
+#ifndef GAMEOBJECT_HPP
+#define GAMEOBJECT_HPP
 
 #include <windows.h>
+#include <unordered_set>
+#include <deque>
 
-constexpr int WINDOW_WIDTH = 450;
-constexpr int WINDOW_HEIGHT = 705;
-constexpr int ROWS = 47;
-constexpr int COLS = 30;
-constexpr int FPS = 30;
+class GameObject
+{
+protected:
+    int m_width;
+    int m_height;
 
-constexpr COLORREF BACKGROUND_COLOR = RGB(44, 62, 80);
-constexpr COLORREF SNAKE_COLOR = RGB(236, 240, 241);
-constexpr COLORREF FRUIT_COLOR = RGB(192, 57, 43);
+    struct pairHash
+    {
+        template <typename T1, typename T2>
+        size_t operator()(const std::pair<T1, T2> &pair) const
+        {
+            return std::hash<T1>()(pair.first) ^ std::hash<T2>()(pair.second);
+        }
+    };
+
+public:
+    GameObject(const int &width, const int &height)
+        : m_width(width), m_height(height) {}
+
+    virtual void draw(const HDC &hdc, const HBRUSH &brush) = 0;
+};
 
 #endif

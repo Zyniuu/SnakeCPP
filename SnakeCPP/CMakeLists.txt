@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(SOURCES
     main.cpp
     Base/Window/Window.cpp
+    GameObjects/Snake/Snake.cpp
 )
 
 # Main executable
@@ -25,4 +26,6 @@ target_link_options(${PROJECT_NAME} PRIVATE -mwindows)
 target_include_directories(${PROJECT_NAME} PRIVATE
     Base/Window
     Base/Constants
+    GameObjects/Common
+    GameObjects/Snake
 )
