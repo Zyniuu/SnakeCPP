@@ -35,6 +35,8 @@ private:
     HWND m_hwnd;
     HDC m_memoryDC;
     HBITMAP m_memoryBitmap;
+    WPARAM m_lastKey;
+    bool m_isInputPending;
     std::string m_title;
     std::atomic<bool> m_isRunning;
     std::thread m_updateThread;

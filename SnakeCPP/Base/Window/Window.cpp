@@ -22,7 +22,8 @@
 #include "../Constants/Constants.hpp"
 #include <chrono>
 
-Window::Window(const std::string &title) : m_title(title), m_isRunning(false) {}
+Window::Window(const std::string &title) 
+    : m_title(title), m_isRunning(false), m_isInputPending(false) {}
 
 Window::~Window()
 {
@@ -113,8 +114,6 @@ void Window::run()
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-
-    m_isRunning = false;
 }
 
 void Window::update()
@@ -137,6 +136,12 @@ void Window::update()
 
         if (m_snake && m_fruit)
         {
+            if (m_isInputPending)
+            {
+                m_snake->handleInput(m_lastKey);
+                m_isInputPending = false;
+            }
+
             m_snake->update(WINDOW_WIDTH, WINDOW_HEIGHT);
 
             if (m_snake->getHead() == m_fruit->getPosition())
@@ -224,8 +229,11 @@ LRESULT Window::handleMsg(UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_KEYDOWN:
     {
-        if (m_snake)
-            m_snake->handleInput(wParam);
+        if (!m_isInputPending)
+        {
+            m_lastKey = wParam;
+            m_isInputPending = true;
+        }
         return 0;
     }
 
