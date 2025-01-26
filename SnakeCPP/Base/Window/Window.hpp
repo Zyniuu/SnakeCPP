@@ -30,6 +30,8 @@ class Window
 {
 private:
     HWND m_hwnd;
+    HDC m_memoryDC;
+    HBITMAP m_memoryBitmap;
     std::string m_title;
     std::unique_ptr<Snake> m_snake;
     std::unordered_map<COLORREF, HBRUSH> m_brushes;
