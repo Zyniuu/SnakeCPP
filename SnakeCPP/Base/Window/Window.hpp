@@ -25,6 +25,8 @@
 #include <string>
 #include <unordered_map>
 #include <memory>
+#include <atomic>
+#include <thread>
 
 class Window
 {
@@ -33,6 +35,8 @@ private:
     HDC m_memoryDC;
     HBITMAP m_memoryBitmap;
     std::string m_title;
+    std::atomic<bool> m_isRunning;
+    std::thread m_updateThread;
     std::unique_ptr<Snake> m_snake;
     std::unordered_map<COLORREF, HBRUSH> m_brushes;
 
@@ -45,6 +49,7 @@ public:
     int run();
 
 private:
+    void update();
     HBRUSH getBrush(const COLORREF &color);
     LRESULT handleMsg(UINT uMsg, WPARAM wParam, LPARAM lParam);
     static LRESULT CALLBACK windowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);

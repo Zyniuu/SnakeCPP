@@ -20,11 +20,17 @@
 
 #include "Window.hpp"
 #include "../Constants/Constants.hpp"
+#include <chrono>
 
-Window::Window(const std::string &title) : m_title(title) {}
+Window::Window(const std::string &title) : m_title(title), m_isRunning(false) {}
 
 Window::~Window()
 {
+    m_isRunning = false;
+
+    if (m_updateThread.joinable())
+        m_updateThread.join();
+
     if (m_memoryBitmap)
     {
         DeleteObject(m_memoryBitmap);
@@ -69,7 +75,8 @@ bool Window::create(const HINSTANCE &hInstance)
         nullptr,
         nullptr,
         hInstance,
-        this);
+        this
+    );
 
     if (!m_hwnd)
     {
@@ -90,6 +97,8 @@ void Window::show(const int &nCmdShow) { ShowWindow(m_hwnd, nCmdShow); }
 
 int Window::run()
 {
+    m_isRunning = true;
+    m_updateThread = std::thread(&Window::update, this);
     MSG msg = {};
 
     while (GetMessage(&msg, nullptr, 0, 0))
@@ -98,7 +107,24 @@ int Window::run()
         DispatchMessage(&msg);
     }
 
+    m_isRunning = false;
+
     return msg.wParam;
+}
+
+void Window::update()
+{
+    int width = WINDOW_WIDTH / COLS;
+    int height = WINDOW_HEIGHT / ROWS;
+    int x = (COLS / 2) * width;
+    int y = (ROWS / 2) * height;
+    m_snake = std::make_unique<Snake>(x, y, width, height);
+
+    while (m_isRunning)
+    {
+        InvalidateRect(m_hwnd, nullptr, FALSE);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000 / FPS));
+    }
 }
 
 HBRUSH Window::getBrush(const COLORREF &color)
@@ -107,7 +133,7 @@ HBRUSH Window::getBrush(const COLORREF &color)
 
     if (it != m_brushes.end())
         return it->second;
-    
+
     HBRUSH brush = CreateSolidBrush(color);
     m_brushes[color] = brush;
     return brush;
@@ -138,6 +164,24 @@ LRESULT Window::handleMsg(UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch (uMsg)
     {
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(m_hwnd, &ps);
+
+        RECT clientRect;
+        GetClientRect(m_hwnd, &clientRect);
+        FillRect(m_memoryDC, &clientRect, getBrush(BACKGROUND_COLOR));
+
+        if (m_snake)
+            m_snake->draw(m_memoryDC, getBrush(SNAKE_COLOR));
+
+        BitBlt(hdc, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, m_memoryDC, 0, 0, SRCCOPY);
+
+        EndPaint(m_hwnd, &ps);
+        return 0;
+    }
+
     case WM_DESTROY:
     {
         PostQuitMessage(0);
