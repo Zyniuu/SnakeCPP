@@ -62,16 +62,23 @@ bool Window::create(const HINSTANCE &hInstance)
         return false;
     }
 
-    int windowPosX = (GetSystemMetrics(SM_CXSCREEN) - WINDOW_WIDTH) / 2;
-    int windowPosY = (GetSystemMetrics(SM_CYSCREEN) - WINDOW_HEIGHT) / 2;
+    DWORD windowStyle = WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_MAXIMIZEBOX;
+    RECT windowRect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT};
+
+    AdjustWindowRect(&windowRect, windowStyle, FALSE);
+
+    int windowWidth = windowRect.right - windowRect.left;
+    int windowHeight = windowRect.bottom - windowRect.top;
+    int windowPosX = (GetSystemMetrics(SM_CXSCREEN) - windowWidth) / 2;
+    int windowPosY = (GetSystemMetrics(SM_CYSCREEN) - windowHeight) / 2;
 
     m_hwnd = CreateWindowEx(
         0,
         m_title.c_str(),
         m_title.c_str(),
-        WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_MAXIMIZEBOX,
+        windowStyle,
         windowPosX, windowPosY,
-        WINDOW_WIDTH, WINDOW_HEIGHT,
+        windowWidth, windowHeight,
         nullptr,
         nullptr,
         hInstance,
@@ -125,6 +132,9 @@ void Window::update()
     while (m_isRunning)
     {
         auto startTime = std::chrono::high_resolution_clock::now();
+
+        if (m_snake)
+            m_snake->update();
 
         InvalidateRect(m_hwnd, nullptr, FALSE);
 
@@ -193,6 +203,13 @@ LRESULT Window::handleMsg(UINT uMsg, WPARAM wParam, LPARAM lParam)
         BitBlt(hdc, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, m_memoryDC, 0, 0, SRCCOPY);
 
         EndPaint(m_hwnd, &ps);
+        return 0;
+    }
+
+    case WM_KEYDOWN:
+    {
+        if (m_snake)
+            m_snake->handleInput(wParam);
         return 0;
     }
 
