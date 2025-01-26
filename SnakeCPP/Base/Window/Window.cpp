@@ -25,6 +25,18 @@ Window::Window(const std::string &title) : m_title(title) {}
 
 Window::~Window()
 {
+    if (m_memoryBitmap)
+    {
+        DeleteObject(m_memoryBitmap);
+        m_memoryBitmap = nullptr;
+    }
+
+    if (m_memoryDC)
+    {
+        DeleteObject(m_memoryDC);
+        m_memoryDC = nullptr;
+    }
+
     for (auto &[color, brush] : m_brushes)
         DeleteObject(brush);
     m_brushes.clear();
@@ -64,6 +76,12 @@ bool Window::create(const HINSTANCE &hInstance)
         MessageBox(nullptr, "Failed to create a window.", "Error", MB_OK | MB_ICONERROR);
         return false;
     }
+
+    HDC hdc = GetDC(m_hwnd);
+    m_memoryDC = CreateCompatibleDC(hdc);
+    m_memoryBitmap = CreateCompatibleBitmap(hdc, WINDOW_WIDTH, WINDOW_HEIGHT);
+    SelectObject(m_memoryDC, m_memoryBitmap);
+    ReleaseDC(m_hwnd, hdc);
 
     return true;
 }
