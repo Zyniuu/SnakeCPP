@@ -134,7 +134,7 @@ void Window::update()
         auto startTime = std::chrono::high_resolution_clock::now();
 
         if (m_snake)
-            m_snake->update();
+            m_snake->update(WINDOW_WIDTH, WINDOW_HEIGHT);
 
         InvalidateRect(m_hwnd, nullptr, FALSE);
 
