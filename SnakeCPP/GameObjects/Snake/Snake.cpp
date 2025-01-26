@@ -27,10 +27,9 @@ Snake::Snake(const int &x, const int &y, const int &width, const int &height)
     m_bodySet.insert({x, y});
 }
 
-void Snake::update()
+void Snake::update(const int &windowWidth, const int &windowHeight)
 {
-    std::pair<int, int> head = getHead();
-    std::pair<int, int> newHead = std::make_pair(head.first + m_dx, head.second + m_dy);
+    std::pair<int, int> newHead = adjustHead(windowWidth, windowHeight);
 
     m_body.push_front(newHead);
     m_bodySet.insert(newHead);
@@ -100,4 +99,18 @@ void Snake::draw(const HDC &hdc, const HBRUSH &brush)
         RECT rect = {x, y, x + m_width, y + m_height};
         FillRect(hdc, &rect, brush);
     }
+}
+
+std::pair<int, int> Snake::adjustHead(const int &windowWidth, const int &windowHeight)
+{
+    std::pair<int, int> head = getHead();
+    if (head.first < 0)
+        return std::make_pair(windowWidth - m_width, head.second);
+    if (head.first >= windowWidth)
+        return std::make_pair(0, head.second);
+    if (head.second < 0)
+        return std::make_pair(head.first, windowHeight - m_height);
+    if (head.second >= windowHeight)
+        return std::make_pair(head.first, 0);
+    return std::make_pair(head.first + m_dx, head.second + m_dy);
 }

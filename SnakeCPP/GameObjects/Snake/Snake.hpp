@@ -34,13 +34,16 @@ private:
 public:
     Snake(const int &x, const int &y, const int &width, const int &height);
 
-    void update();
+    void update(const int &windowWidth, const int &windowHeight);
     void grow();
     void handleInput(WPARAM keyCode);
     bool collideWithSelf() const;
     std::pair<int, int> getHead() const;
     std::deque<std::pair<int, int>> getBody() const;
     void draw(const HDC &hdc, const HBRUSH &brush) override;
+
+private:
+    std::pair<int, int> adjustHead(const int &windowWidth, const int &windowHeight);
 };
 
 #endif
