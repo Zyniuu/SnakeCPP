@@ -52,29 +52,41 @@ void Snake::handleInput(WPARAM keyCode)
     {
     case VK_UP:
     {
-        m_dy = -m_height;
-        m_dx = 0;
+        if (m_dy != m_height)
+        {
+            m_dy = -m_height;
+            m_dx = 0;
+        }
         break;
     }
 
     case VK_DOWN:
     {
-        m_dy = m_height;
-        m_dx = 0;
+        if (m_dy != -m_height)
+        {
+            m_dy = m_height;
+            m_dx = 0;
+        }
         break;
     }
 
     case VK_LEFT:
     {
-        m_dx = -m_width;
-        m_dy = 0;
+        if (m_dx != m_width)
+        {
+            m_dx = -m_width;
+            m_dy = 0;
+        }
         break;
     }
 
     case VK_RIGHT:
     {
-        m_dx = m_width;
-        m_dy = 0;
+        if (m_dx != -m_width)
+        {
+            m_dx = m_width;
+            m_dy = 0;
+        }
         break;
     }
     }
