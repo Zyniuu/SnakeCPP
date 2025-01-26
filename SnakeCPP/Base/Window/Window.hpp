@@ -21,23 +21,29 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
-#include <windows.h>
+#include "../../GameObjects/Snake/Snake.hpp"
 #include <string>
+#include <unordered_map>
+#include <memory>
 
 class Window
 {
 private:
     HWND m_hwnd;
     std::string m_title;
+    std::unique_ptr<Snake> m_snake;
+    std::unordered_map<COLORREF, HBRUSH> m_brushes;
 
 public:
     Window(const std::string &title);
+    ~Window();
 
     bool create(const HINSTANCE &hInstance);
     void show(const int &nCmdShow);
     int run();
 
 private:
+    HBRUSH getBrush(const COLORREF &color);
     LRESULT handleMsg(UINT uMsg, WPARAM wParam, LPARAM lParam);
     static LRESULT CALLBACK windowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 };

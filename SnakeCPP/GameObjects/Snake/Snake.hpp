@@ -39,6 +39,7 @@ public:
     void handleInput(WPARAM keyCode);
     bool collideWithSelf() const;
     std::pair<int, int> getHead() const;
+    std::deque<std::pair<int, int>> getBody() const;
     void draw(const HDC &hdc, const HBRUSH &brush) override;
 };
 

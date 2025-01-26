@@ -89,6 +89,8 @@ bool Snake::collideWithSelf() const
 
 std::pair<int, int> Snake::getHead() const { return m_body.front(); }
 
+std::deque<std::pair<int, int>> Snake::getBody() const { return m_body; }
+
 void Snake::draw(const HDC &hdc, const HBRUSH &brush)
 {
     for (int i = 0; i < m_body.size(); i++)
