@@ -102,21 +102,19 @@ bool Window::create(const HINSTANCE &hInstance)
 
 void Window::show(const int &nCmdShow) { ShowWindow(m_hwnd, nCmdShow); }
 
-int Window::run()
+void Window::run()
 {
     m_isRunning = true;
     m_updateThread = std::thread(&Window::update, this);
     MSG msg = {};
 
-    while (GetMessage(&msg, nullptr, 0, 0))
+    while (GetMessage(&msg, nullptr, 0, 0) && m_isRunning)
     {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
 
     m_isRunning = false;
-
-    return msg.wParam;
 }
 
 void Window::update()
@@ -140,6 +138,15 @@ void Window::update()
         if (m_snake && m_fruit)
         {
             m_snake->update(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+            if (m_snake->getHead() == m_fruit->getPosition())
+            {
+                m_snake->grow();
+                m_fruit->regenerate(COLS, ROWS, m_snake->getBody());
+            }
+
+            if (m_snake->collideWithSelf())
+                m_isRunning = false;
         }
 
         InvalidateRect(m_hwnd, nullptr, FALSE);

@@ -21,7 +21,7 @@
 #include "Snake.hpp"
 
 Snake::Snake(const int &x, const int &y, const int &width, const int &height)
-    : GameObject(width, height), m_dx(0), m_dy(height), m_isGrowing(false)
+    : GameObject(width, height), m_dx(0), m_dy(height), m_isGrowing(false), m_isCollided(false)
 {
     m_body.push_back({x, y});
     m_bodySet.insert({x, y});
@@ -30,6 +30,9 @@ Snake::Snake(const int &x, const int &y, const int &width, const int &height)
 void Snake::update(const int &windowWidth, const int &windowHeight)
 {
     std::pair<int, int> newHead = adjustHead(windowWidth, windowHeight);
+
+    if (m_bodySet.count(newHead) > 0)
+        m_isCollided = true;
 
     m_body.push_front(newHead);
     m_bodySet.insert(newHead);
@@ -92,11 +95,7 @@ void Snake::handleInput(WPARAM keyCode)
     }
 }
 
-bool Snake::collideWithSelf() const
-{
-    std::pair<int, int> head = getHead();
-    return m_bodySet.count(head) > 1;
-}
+bool Snake::collideWithSelf() const { return m_isCollided; }
 
 std::pair<int, int> Snake::getHead() const { return m_body.front(); }
 

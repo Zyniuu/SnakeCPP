@@ -29,5 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     mainWindow.show(nCmdShow);
 
-    return mainWindow.run();
+    mainWindow.run();
+
+    return 0;
 }
