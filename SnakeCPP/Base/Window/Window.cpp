@@ -23,6 +23,13 @@
 
 Window::Window(const std::string &title) : m_title(title) {}
 
+Window::~Window()
+{
+    for (auto &[color, brush] : m_brushes)
+        DeleteObject(brush);
+    m_brushes.clear();
+}
+
 bool Window::create(const HINSTANCE &hInstance)
 {
     WNDCLASS wc = {};
@@ -74,6 +81,18 @@ int Window::run()
     }
 
     return msg.wParam;
+}
+
+HBRUSH Window::getBrush(const COLORREF &color)
+{
+    auto it = m_brushes.find(color);
+
+    if (it != m_brushes.end())
+        return it->second;
+    
+    HBRUSH brush = CreateSolidBrush(color);
+    m_brushes[color] = brush;
+    return brush;
 }
 
 LRESULT CALLBACK Window::windowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
