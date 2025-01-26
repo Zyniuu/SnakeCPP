@@ -23,16 +23,46 @@
 
 #include "../Common/GameObject.hpp"
 
+/**
+ * @class Fruit
+ * @brief Represents the fruit in the game.
+ */
 class Fruit : public GameObject
 {
 private:
-    int m_x, m_y;
+    int m_x, m_y; // The position of the fruit.
 
 public:
+    /**
+     * @brief Constructs a Fruit object.
+     *
+     * @param width The width of the fruit.
+     * @param height The height of the fruit.
+     */
     Fruit(const int &width, const int &height);
 
+    /**
+     * @brief Gets the position of the fruit.
+     *
+     * @return A pair representing the x and y coordinates of the fruit.
+     */
     std::pair<int, int> getPosition() const;
+
+    /**
+     * @brief Regenerates the fruit at a new position not occupied by the snake.
+     *
+     * @param cols The number of columns in the game grid.
+     * @param rows The number of rows in the game grid.
+     * @param snakeBody The current body of the snake.
+     */
     void regenerate(const int &cols, const int &rows, const std::deque<std::pair<int, int>> &snakeBody);
+
+    /**
+     * @brief Draws the fruit on the screen.
+     *
+     * @param hdc The handle to the device context for drawing.
+     * @param brush The brush used to fill the fruit.
+     */
     void draw(const HDC &hdc, const HBRUSH &brush) override;
 };
 
