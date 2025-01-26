@@ -22,6 +22,7 @@
 #define WINDOW_HPP
 
 #include "../../GameObjects/Snake/Snake.hpp"
+#include "../../GameObjects/Fruit/Fruit.hpp"
 #include <string>
 #include <unordered_map>
 #include <memory>
@@ -38,6 +39,7 @@ private:
     std::atomic<bool> m_isRunning;
     std::thread m_updateThread;
     std::unique_ptr<Snake> m_snake;
+    std::unique_ptr<Fruit> m_fruit;
     std::unordered_map<COLORREF, HBRUSH> m_brushes;
 
 public:
