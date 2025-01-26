@@ -8,6 +8,9 @@ project(SnakeCPP)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Set build type at Release
+set(CMAKE_BUILD_TYPE Release)
+
 # Project source files
 set(SOURCES
     main.cpp
@@ -31,3 +34,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     GameObjects/Snake
     GameObjects/Fruit
 )
+
+# Setting up compilator flags for release build
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -DNDEBUG")
+endif()
