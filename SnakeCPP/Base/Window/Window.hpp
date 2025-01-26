@@ -48,7 +48,7 @@ public:
 
     bool create(const HINSTANCE &hInstance);
     void show(const int &nCmdShow);
-    int run();
+    void run();
 
 private:
     void update();

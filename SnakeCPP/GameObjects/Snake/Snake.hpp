@@ -29,7 +29,7 @@ private:
     std::deque<std::pair<int, int>> m_body;
     std::unordered_set<std::pair<int, int>, pairHash> m_bodySet;
     int m_dx, m_dy;
-    bool m_isGrowing;
+    bool m_isGrowing, m_isCollided;
 
 public:
     Snake(const int &x, const int &y, const int &width, const int &height);
