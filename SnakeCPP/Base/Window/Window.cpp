@@ -114,6 +114,8 @@ int Window::run()
 
 void Window::update()
 {
+    double refreshTime = 1000 / FPS;
+
     int width = WINDOW_WIDTH / COLS;
     int height = WINDOW_HEIGHT / ROWS;
     int x = (COLS / 2) * width;
@@ -122,8 +124,21 @@ void Window::update()
 
     while (m_isRunning)
     {
+        auto startTime = std::chrono::high_resolution_clock::now();
+
         InvalidateRect(m_hwnd, nullptr, FALSE);
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000 / FPS));
+
+        auto endTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double, std::milli> elapsed = endTime - startTime;
+
+        if (elapsed.count() < refreshTime)
+        {
+            std::this_thread::sleep_for(
+                std::chrono::milliseconds(
+                    static_cast<int>(refreshTime - elapsed.count())
+                )
+            );
+        }
     }
 }
 
