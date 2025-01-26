@@ -169,8 +169,7 @@ LRESULT Window::handleMsg(UINT uMsg, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(m_hwnd, &ps);
 
-        RECT clientRect;
-        GetClientRect(m_hwnd, &clientRect);
+        RECT clientRect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT};
         FillRect(m_memoryDC, &clientRect, getBrush(BACKGROUND_COLOR));
 
         if (m_snake)
