@@ -23,20 +23,25 @@
 Snake::Snake(const int &x, const int &y, const int &width, const int &height)
     : GameObject(width, height), m_dx(0), m_dy(height), m_isGrowing(false), m_isCollided(false)
 {
+    // Add the initial position of the snake's head to its body and position set.
     m_body.push_back({x, y});
     m_bodySet.insert({x, y});
 }
 
 void Snake::update(const int &windowWidth, const int &windowHeight)
 {
+    // Calculate the new head position, considering window boundaries.
     std::pair<int, int> newHead = adjustHead(windowWidth, windowHeight);
 
+    // Check if the new head collides with the body.
     if (m_bodySet.count(newHead) > 0)
         m_isCollided = true;
 
+    // Add the new head position to the front of the snake's body.
     m_body.push_front(newHead);
     m_bodySet.insert(newHead);
 
+    // If the snake is not growing, remove the last segment (tail).
     if (!m_isGrowing)
     {
         std::pair<int, int> tail = m_body.back();
@@ -44,7 +49,7 @@ void Snake::update(const int &windowWidth, const int &windowHeight)
         m_bodySet.erase(tail);
     }
     else
-        m_isGrowing = false;
+        m_isGrowing = false; // Reset the growth flag after adding a segment.
 }
 
 void Snake::grow() { m_isGrowing = true; }
@@ -53,9 +58,9 @@ void Snake::handleInput(WPARAM keyCode)
 {
     switch (keyCode)
     {
-    case VK_UP:
+    case VK_UP: // Up arrow key.
     {
-        if (m_dy != m_height)
+        if (m_dy != m_height) // Change to vertical movement if the snake is currently moving horizontally.
         {
             m_dy = -m_height;
             m_dx = 0;
@@ -63,7 +68,7 @@ void Snake::handleInput(WPARAM keyCode)
         break;
     }
 
-    case VK_DOWN:
+    case VK_DOWN: // Down arrow key.
     {
         if (m_dy != -m_height)
         {
@@ -73,9 +78,9 @@ void Snake::handleInput(WPARAM keyCode)
         break;
     }
 
-    case VK_LEFT:
+    case VK_LEFT: // Left arrow key.
     {
-        if (m_dx != m_width)
+        if (m_dx != m_width) // Change to horizontal movement if the snake is currently moving vertically.
         {
             m_dx = -m_width;
             m_dy = 0;
@@ -83,7 +88,7 @@ void Snake::handleInput(WPARAM keyCode)
         break;
     }
 
-    case VK_RIGHT:
+    case VK_RIGHT: // Right arrow key.
     {
         if (m_dx != -m_width)
         {
@@ -107,14 +112,18 @@ void Snake::draw(const HDC &hdc, const HBRUSH &brush)
     {
         int x = m_body[i].first;
         int y = m_body[i].second;
+
+        // Define a rectangle for each segment.
         RECT rect = {x, y, x + m_width, y + m_height};
-        FillRect(hdc, &rect, brush);
+        FillRect(hdc, &rect, brush); // Fill the rectangle with the brush.
     }
 }
 
 std::pair<int, int> Snake::adjustHead(const int &windowWidth, const int &windowHeight)
 {
     std::pair<int, int> head = getHead();
+
+    // If the new position exceeds the window boundaries, wrap around to the opposite side.
     if (head.first < 0)
         return std::make_pair(windowWidth - m_width, head.second);
     if (head.first >= windowWidth)

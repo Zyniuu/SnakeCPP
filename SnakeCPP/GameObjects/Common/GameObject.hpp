@@ -25,12 +25,19 @@
 #include <unordered_set>
 #include <deque>
 
+/**
+ * @class GameObject
+ * @brief Represents a base class for drawable objects in the game.
+ */
 class GameObject
 {
 protected:
-    int m_width;
-    int m_height;
+    int m_width;  // The width of the object.
+    int m_height; // The height of the object.
 
+    /**
+     * @brief A custom hash function for pairs.
+     */
     struct pairHash
     {
         template <typename T1, typename T2>
@@ -41,9 +48,21 @@ protected:
     };
 
 public:
+    /**
+     * @brief Constructs a GameObject.
+     *
+     * @param width The width of the object.
+     * @param height The height of the object.
+     */
     GameObject(const int &width, const int &height)
         : m_width(width), m_height(height) {}
 
+    /**
+     * @brief Pure virtual function to draw the object on the screen.
+     *
+     * @param hdc The handle to the device context for drawing.
+     * @param brush The brush used to fill the object.
+     */
     virtual void draw(const HDC &hdc, const HBRUSH &brush) = 0;
 };
 
