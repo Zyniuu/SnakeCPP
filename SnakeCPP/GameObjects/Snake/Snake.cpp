@@ -23,8 +23,8 @@
 Snake::Snake(const int &x, const int &y, const int &width, const int &height)
     : GameObject(width, height), m_dx(0), m_dy(height), m_isGrowing(false)
 {
-    m_body.push_back({x * width, y * height});
-    m_bodySet.insert({x * width, y * height});
+    m_body.push_back({x, y});
+    m_bodySet.insert({x, y});
 }
 
 void Snake::update()
