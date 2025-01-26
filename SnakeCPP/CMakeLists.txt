@@ -13,6 +13,7 @@ set(SOURCES
     main.cpp
     Base/Window/Window.cpp
     GameObjects/Snake/Snake.cpp
+    GameObjects/Fruit/Fruit.cpp
 )
 
 # Main executable
@@ -28,4 +29,5 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     Base/Constants
     GameObjects/Common
     GameObjects/Snake
+    GameObjects/Fruit
 )

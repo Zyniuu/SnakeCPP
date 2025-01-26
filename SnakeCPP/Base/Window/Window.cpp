@@ -127,14 +127,20 @@ void Window::update()
     int height = WINDOW_HEIGHT / ROWS;
     int x = (COLS / 2) * width;
     int y = (ROWS / 2) * height;
+
     m_snake = std::make_unique<Snake>(x, y, width, height);
+    m_fruit = std::make_unique<Fruit>(width, height);
+
+    m_fruit->regenerate(COLS, ROWS, m_snake->getBody());
 
     while (m_isRunning)
     {
         auto startTime = std::chrono::high_resolution_clock::now();
 
-        if (m_snake)
+        if (m_snake && m_fruit)
+        {
             m_snake->update(WINDOW_WIDTH, WINDOW_HEIGHT);
+        }
 
         InvalidateRect(m_hwnd, nullptr, FALSE);
 
@@ -196,6 +202,9 @@ LRESULT Window::handleMsg(UINT uMsg, WPARAM wParam, LPARAM lParam)
 
         RECT clientRect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT};
         FillRect(m_memoryDC, &clientRect, getBrush(BACKGROUND_COLOR));
+
+        if (m_fruit)
+            m_fruit->draw(m_memoryDC, getBrush(FRUIT_COLOR));
 
         if (m_snake)
             m_snake->draw(m_memoryDC, getBrush(SNAKE_COLOR));
