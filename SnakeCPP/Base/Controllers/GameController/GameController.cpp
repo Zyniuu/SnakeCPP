@@ -51,6 +51,10 @@ bool GameController::update()
     // Move snake and check collisions
     m_snake->update(WINDOW_WIDTH, WINDOW_HEIGHT);
 
+    // Chceck if snake's body fills the whole window
+    if (m_snake->getBody().size() >= COLS * ROWS)
+        return false;
+
     if (m_snake->getHead() == m_fruit->getPosition())
     {
         m_snake->grow();
