@@ -19,7 +19,7 @@
  */
 
 #include "Snake.hpp"
-#include "../../Base/Controlers/Renderer/Common/Renderer.hpp"
+#include "../../Base/Controllers/Renderer/Common/Renderer.hpp"
 
 Snake::Snake(const int &x, const int &y, const int &width, const int &height)
     : GameObject(width, height), m_dx(0), m_dy(height), m_isGrowing(false), m_isCollided(false)

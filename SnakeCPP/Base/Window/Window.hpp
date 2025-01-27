@@ -21,8 +21,8 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
-#include "../Controlers/GameController/GameController.hpp"
-#include "../Controlers/Renderer/WindowRenderer/WindowRenderer.hpp"
+#include "../Controllers/GameController/GameController.hpp"
+#include "../Controllers/Renderer/WindowRenderer/WindowRenderer.hpp"
 #include <string>
 #include <atomic>
 #include <thread>
