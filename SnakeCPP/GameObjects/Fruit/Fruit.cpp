@@ -19,7 +19,7 @@
  */
 
 #include "Fruit.hpp"
-#include "../../Base/Controlers/Renderer/Common/Renderer.hpp"
+#include "../../Base/Controllers/Renderer/Common/Renderer.hpp"
 #include <time.h>
 
 Fruit::Fruit(const int &width, const int &height)
