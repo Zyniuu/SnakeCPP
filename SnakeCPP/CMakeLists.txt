@@ -15,6 +15,8 @@ set(CMAKE_BUILD_TYPE Release)
 set(SOURCES
     main.cpp
     Base/Window/Window.cpp
+    Base/Controlers/Renderer/WindowRenderer/WindowRenderer.cpp
+    Base/Controlers/GameController/GameController.cpp
     GameObjects/Snake/Snake.cpp
     GameObjects/Fruit/Fruit.cpp
 )
@@ -30,6 +32,9 @@ target_link_options(${PROJECT_NAME} PRIVATE -mwindows)
 target_include_directories(${PROJECT_NAME} PRIVATE
     Base/Window
     Base/Constants
+    Base/Controlers/Renderer/Common
+    Base/Controlers/Renderer/WindowRenderer
+    Base/Controlers/GameController
     GameObjects/Common
     GameObjects/Snake
     GameObjects/Fruit

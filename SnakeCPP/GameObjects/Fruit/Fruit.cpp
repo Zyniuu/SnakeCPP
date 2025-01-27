@@ -19,6 +19,7 @@
  */
 
 #include "Fruit.hpp"
+#include "../../Base/Controlers/Renderer/Common/Renderer.hpp"
 #include <time.h>
 
 Fruit::Fruit(const int &width, const int &height)
@@ -42,10 +43,7 @@ void Fruit::regenerate(const int &cols, const int &rows, const std::deque<std::p
     } while (snakeSet.count(getPosition()) > 0); // Repeat if the position overlaps with any part of the snake's body.
 }
 
-void Fruit::draw(const HDC &hdc, const HBRUSH &brush)
+void Fruit::draw(Renderer &renderer, const COLORREF &color)
 {
-    // Define the rectangle representing the fruit's position and dimensions.
-    RECT rect = {m_x, m_y, m_x + m_width, m_y + m_height};
-    // Fill the rectangle with the specified brush color.
-    FillRect(hdc, &rect, brush);
+    renderer.drawRectangle(m_x, m_y, m_width, m_height, color);
 }

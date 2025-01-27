@@ -19,6 +19,7 @@
  */
 
 #include "Snake.hpp"
+#include "../../Base/Controlers/Renderer/Common/Renderer.hpp"
 
 Snake::Snake(const int &x, const int &y, const int &width, const int &height)
     : GameObject(width, height), m_dx(0), m_dy(height), m_isGrowing(false), m_isCollided(false)
@@ -106,17 +107,10 @@ std::pair<int, int> Snake::getHead() const { return m_body.front(); }
 
 std::deque<std::pair<int, int>> Snake::getBody() const { return m_body; }
 
-void Snake::draw(const HDC &hdc, const HBRUSH &brush)
+void Snake::draw(Renderer &renderer, const COLORREF &color)
 {
     for (int i = 0; i < m_body.size(); i++)
-    {
-        int x = m_body[i].first;
-        int y = m_body[i].second;
-
-        // Define a rectangle for each segment.
-        RECT rect = {x, y, x + m_width, y + m_height};
-        FillRect(hdc, &rect, brush); // Fill the rectangle with the brush.
-    }
+        renderer.drawRectangle(m_body[i].first, m_body[i].second, m_width, m_height, color);
 }
 
 std::pair<int, int> Snake::adjustHead(const int &windowWidth, const int &windowHeight)

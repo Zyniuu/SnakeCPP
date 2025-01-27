@@ -46,11 +46,6 @@ Window::~Window()
         DeleteObject(m_memoryDC);
         m_memoryDC = nullptr;
     }
-
-    // Delete all created brushes.
-    for (auto &[color, brush] : m_brushes)
-        DeleteObject(brush);
-    m_brushes.clear();
 }
 
 bool Window::create(const HINSTANCE &hInstance)
@@ -103,12 +98,7 @@ bool Window::create(const HINSTANCE &hInstance)
         return false;
     }
 
-    // Initialize double buffering for smooth rendering.
-    HDC hdc = GetDC(m_hwnd);
-    m_memoryDC = CreateCompatibleDC(hdc);                                      // Create a compatible memory device context.
-    m_memoryBitmap = CreateCompatibleBitmap(hdc, WINDOW_WIDTH, WINDOW_HEIGHT); // Create a bitmap for double buffering.
-    SelectObject(m_memoryDC, m_memoryBitmap);                                  // Select the bitmap into the memory DC.
-    ReleaseDC(m_hwnd, hdc);                                                    // Release the device context.
+    initDoubleBuffering();
 
     return true;
 }
@@ -132,43 +122,21 @@ void Window::update()
 {
     double refreshTime = 1000 / FPS; // Target refresh time per frame (in milliseconds).
 
-    // Calculate cell dimensions and initialize snake and fruit objects.
-    int width = WINDOW_WIDTH / COLS;
-    int height = WINDOW_HEIGHT / ROWS;
-    int x = (COLS / 2) * width;
-    int y = (ROWS / 2) * height;
-
-    m_snake = std::make_unique<Snake>(x, y, width, height);
-    m_fruit = std::make_unique<Fruit>(width, height);
-
-    m_fruit->regenerate(COLS, ROWS, m_snake->getBody());
+    m_gameController = std::make_unique<GameController>();
 
     while (m_isRunning)
     {
         auto startTime = std::chrono::high_resolution_clock::now();
 
-        if (m_snake && m_fruit)
+        // Handle input if pending.
+        if (m_isInputPending)
         {
-            // Handle input if pending.
-            if (m_isInputPending)
-            {
-                m_snake->handleInput(m_lastKey);
-                m_isInputPending = false;
-            }
-
-            // Update the snake's position and check collisions.
-            m_snake->update(WINDOW_WIDTH, WINDOW_HEIGHT);
-
-            if (m_snake->getHead() == m_fruit->getPosition())
-            {
-                m_snake->grow();
-                m_fruit->regenerate(COLS, ROWS, m_snake->getBody());
-            }
-
-            // End the game if the snake collides with itself.
-            if (m_snake->collideWithSelf())
-                m_isRunning = false;
+            m_gameController->handleInput(m_lastKey);
+            m_isInputPending = false;
         }
+
+        if (!m_gameController->update())
+            m_isRunning = false; // End the game if necessary.
 
         InvalidateRect(m_hwnd, nullptr, FALSE); // Request a window redraw.
 
@@ -187,16 +155,14 @@ void Window::update()
     }
 }
 
-HBRUSH Window::getBrush(const COLORREF &color)
+void Window::initDoubleBuffering()
 {
-    auto it = m_brushes.find(color);
-
-    if (it != m_brushes.end())
-        return it->second;
-
-    HBRUSH brush = CreateSolidBrush(color);
-    m_brushes[color] = brush;
-    return brush;
+    HDC hdc = GetDC(m_hwnd);
+    m_memoryDC = CreateCompatibleDC(hdc);                                      // Create a compatible memory device context.
+    m_memoryBitmap = CreateCompatibleBitmap(hdc, WINDOW_WIDTH, WINDOW_HEIGHT); // Create a bitmap for double buffering.
+    SelectObject(m_memoryDC, m_memoryBitmap);                                  // Select the bitmap into the memory DC.
+    ReleaseDC(m_hwnd, hdc);                                                    // Release the device context.
+    m_windowRenderer = std::make_unique<WindowRenderer>(m_memoryDC);           // Initialize renderer.
 }
 
 LRESULT CALLBACK Window::windowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -229,16 +195,8 @@ LRESULT Window::handleMsg(UINT uMsg, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(m_hwnd, &ps);
 
-        // Clear the window with the background color.
-        RECT clientRect = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT};
-        FillRect(m_memoryDC, &clientRect, getBrush(BACKGROUND_COLOR));
-
-        // Draw the fruit and the snake.
-        if (m_fruit)
-            m_fruit->draw(m_memoryDC, getBrush(FRUIT_COLOR));
-
-        if (m_snake)
-            m_snake->draw(m_memoryDC, getBrush(SNAKE_COLOR));
+        m_windowRenderer->clear(BACKGROUND_COLOR);
+        m_gameController->render(*m_windowRenderer);
 
         // Copy the off-screen buffer to the actual window.
         BitBlt(hdc, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, m_memoryDC, 0, 0, SRCCOPY);
