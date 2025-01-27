@@ -21,7 +21,7 @@
 #include "WindowRenderer.hpp"
 #include "../../../Constants/Constants.hpp"
 
-WindowRenderer::WindowRenderer(HDC hdc) : m_hdc(hdc) {}
+WindowRenderer::WindowRenderer(const HDC &hdc) : m_hdc(hdc) {}
 
 WindowRenderer::~WindowRenderer()
 {

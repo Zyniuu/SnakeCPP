@@ -40,7 +40,7 @@ public:
      *
      * @param hdc Device context to draw on.
      */
-    WindowRenderer(HDC hdc);
+    WindowRenderer(const HDC &hdc);
 
     /**
      * @brief Releases recources of the renderer.

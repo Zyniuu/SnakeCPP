@@ -55,7 +55,7 @@ void Snake::update(const int &windowWidth, const int &windowHeight)
 
 void Snake::grow() { m_isGrowing = true; }
 
-void Snake::handleInput(WPARAM keyCode)
+void Snake::handleInput(const WPARAM &keyCode)
 {
     switch (keyCode)
     {
