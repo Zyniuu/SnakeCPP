@@ -65,7 +65,7 @@ public:
      *
      * @param keyCode The virtual key code of the pressed key.
      */
-    void handleInput(WPARAM keyCode);
+    void handleInput(const WPARAM &keyCode);
 
     /**
      * @brief Checks if the snake has collided with itself.

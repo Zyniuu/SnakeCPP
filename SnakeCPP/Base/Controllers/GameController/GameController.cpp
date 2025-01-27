@@ -37,7 +37,7 @@ GameController::GameController()
     m_fruit->regenerate(COLS, ROWS, m_snake->getBody());
 }
 
-void GameController::handleInput(WPARAM keyCode)
+void GameController::handleInput(const WPARAM &keyCode)
 {
     if (m_snake)
         m_snake->handleInput(keyCode);

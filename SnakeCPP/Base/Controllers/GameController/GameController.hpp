@@ -46,7 +46,7 @@ public:
      *
      * @param keyCode The virtual key code of the pressed key.
      */
-    void handleInput(WPARAM keyCode);
+    void handleInput(const WPARAM &keyCode);
 
     /**
      * @brief Updates the game state (moves snake, checks collisions).
