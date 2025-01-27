@@ -60,10 +60,10 @@ public:
     /**
      * @brief Pure virtual function to draw the object on the screen.
      *
-     * @param hdc The handle to the device context for drawing.
-     * @param brush The brush used to fill the object.
+     * @param renderer Renderer used to draw on the window.
+     * @param color Color of the game object.
      */
-    virtual void draw(const HDC &hdc, const HBRUSH &brush) = 0;
+    virtual void draw(class Renderer &renderer, const COLORREF &color) = 0;
 };
 
 #endif

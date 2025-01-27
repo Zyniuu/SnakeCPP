@@ -91,10 +91,10 @@ public:
     /**
      * @brief Draws the snake on the screen.
      *
-     * @param hdc The handle to the device context for drawing.
-     * @param brush The brush used to fill the snake.
+     * @param renderer Renderer used to draw on the window.
+     * @param color Color of the snake.
      */
-    void draw(const HDC &hdc, const HBRUSH &brush) override;
+    void draw(class Renderer &renderer, const COLORREF &color) override;
 
 private:
     /**

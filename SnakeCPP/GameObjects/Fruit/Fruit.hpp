@@ -60,10 +60,10 @@ public:
     /**
      * @brief Draws the fruit on the screen.
      *
-     * @param hdc The handle to the device context for drawing.
-     * @param brush The brush used to fill the fruit.
+     * @param renderer Renderer used to draw on the window.
+     * @param color Color of the fruit.
      */
-    void draw(const HDC &hdc, const HBRUSH &brush) override;
+    void draw(class Renderer &renderer, const COLORREF &color) override;
 };
 
 #endif
