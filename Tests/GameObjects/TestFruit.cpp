@@ -1,7 +1,27 @@
+/**
+ * Snake game written in C++ using winAPI.
+ * Copyright (C) 2025  Mateusz Zynek
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * TestFruit.cpp
+ */
+
 #include <gtest/gtest.h>
 #include <algorithm>
 #include "../../SnakeCPP/GameObjects/Fruit/Fruit.hpp"
-#include "../../SnakeCPP/Base/Controllers/Renderer/Common/Renderer.hpp"
+#include "../../SnakeCPP/Base/Controllers/Renderer/MockRenderer/MockRenderer.hpp"
 
 // Test case: The constructor initializes the fruit correctly
 TEST(FruitTests, ConstructorInitializesCorrectly) {
@@ -68,22 +88,6 @@ TEST(FruitTests, RegenerateAvoidsSnakeBody)
 // Test case: The draw() function calls Renderer correctly
 TEST(FruitTests, DrawCallsRenderer) 
 {
-    class MockRenderer : public Renderer
-    {
-    public:
-        int drawCalls = 0;
-
-        void clear(const COLORREF &color)
-        {
-            return;
-        }
-
-        void drawRectangle(const int &x, const int &y, const int &width, const int &height, const COLORREF &color) override
-        {
-            drawCalls++;
-        }
-    };
-
     Fruit fruit(20, 20);
     MockRenderer mockRenderer; // Create a mock renderer
 
