@@ -1,8 +1,3 @@
----
-title: GameObjects/Fruit/Fruit.hpp
-
----
-
 # GameObjects/Fruit/Fruit.hpp
 
 

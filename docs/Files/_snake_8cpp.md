@@ -1,8 +1,3 @@
----
-title: GameObjects/Snake/Snake.cpp
-
----
-
 # GameObjects/Snake/Snake.cpp
 
 

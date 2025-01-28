@@ -1,8 +1,3 @@
----
-title: Base/Window/Window.hpp
-
----
-
 # Base/Window/Window.hpp
 
 

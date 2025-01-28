@@ -1,8 +1,3 @@
----
-title: Base/Controllers/GameController
-
----
-
 # Base/Controllers/GameController
 
 

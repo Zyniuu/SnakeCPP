@@ -1,8 +1,3 @@
----
-title: Base/Window/Window.cpp
-
----
-
 # Base/Window/Window.cpp
 
 

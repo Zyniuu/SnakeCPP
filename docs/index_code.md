@@ -1,8 +1,3 @@
----
-title: Code Documentation
-
----
-
 # Code Documentation
 
 * **[Classes](index_classes.md)**

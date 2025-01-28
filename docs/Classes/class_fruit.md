@@ -1,9 +1,3 @@
----
-title: Fruit
-summary: Represents the fruit in the game. 
-
----
-
 # Fruit
 
 

@@ -1,8 +1,3 @@
----
-title: Base/Controllers/GameController/GameController.hpp
-
----
-
 # Base/Controllers/GameController/GameController.hpp
 
 

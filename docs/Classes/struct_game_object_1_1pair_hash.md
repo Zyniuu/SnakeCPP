@@ -1,9 +1,3 @@
----
-title: GameObject::pairHash
-summary: A custom hash function for pairs. 
-
----
-
 # GameObject::pairHash
 
 
