@@ -32,8 +32,8 @@
 class GameController
 {
 private:
-    std::unique_ptr<Snake> m_snake; // The Snake object.
-    std::unique_ptr<Fruit> m_fruit; // The fruit object.
+    std::unique_ptr<Snake> m_snake; ///< The Snake object.
+    std::unique_ptr<Fruit> m_fruit; ///< The fruit object.
 
 public:
     /**

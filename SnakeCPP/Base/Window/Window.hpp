@@ -34,16 +34,16 @@
 class Window
 {
 private:
-    HWND m_hwnd;                                      // Handle to the game window.
-    HDC m_memoryDC;                                   // Memory device context for double buffering.
-    HBITMAP m_memoryBitmap;                           // Bitmap for double buffering.
-    WPARAM m_lastKey;                                 // Stores the last pressed key.
-    bool m_isInputPending;                            // Indicates if input is pending to be processed.
-    std::string m_title;                              // Title of the window.
-    std::atomic<bool> m_isRunning;                    // Indicates if the game is running.
-    std::thread m_updateThread;                       // Thread for animations and game logic updates.
-    std::unique_ptr<GameController> m_gameController; // Game controller object.
-    std::unique_ptr<WindowRenderer> m_windowRenderer; // Window renderer object.
+    HWND m_hwnd;                                      ///< Handle to the game window.
+    HDC m_memoryDC;                                   ///< Memory device context for double buffering.
+    HBITMAP m_memoryBitmap;                           ///< Bitmap for double buffering.
+    WPARAM m_lastKey;                                 ///< Stores the last pressed key.
+    bool m_isInputPending;                            ///< Indicates if input is pending to be processed.
+    std::string m_title;                              ///< Title of the window.
+    std::atomic<bool> m_isRunning;                    ///< Indicates if the game is running.
+    std::thread m_updateThread;                       ///< Thread for animations and game logic updates.
+    std::unique_ptr<GameController> m_gameController; ///< Game controller object.
+    std::unique_ptr<WindowRenderer> m_windowRenderer; ///< Window renderer object.
 
 public:
     /**

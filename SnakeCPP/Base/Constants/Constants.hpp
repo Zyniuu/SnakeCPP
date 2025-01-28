@@ -23,14 +23,14 @@
 
 #include <windows.h>
 
-constexpr int WINDOW_WIDTH = 450;  // The width of the game window in pixels.
-constexpr int WINDOW_HEIGHT = 705; // The height of the game window in pixels.
-constexpr int ROWS = 47;           // The number of rows in the game grid.
-constexpr int COLS = 30;           // The number of columns in the game grid.
-constexpr int FPS = 30;            // The frame rate of the game in frames per second.
+constexpr int WINDOW_WIDTH = 450;  ///< The width of the game window in pixels.
+constexpr int WINDOW_HEIGHT = 705; ///< The height of the game window in pixels.
+constexpr int ROWS = 47;           ///< The number of rows in the game grid.
+constexpr int COLS = 30;           ///< The number of columns in the game grid.
+constexpr int FPS = 30;            ///< The frame rate of the game in frames per second.
 
-constexpr COLORREF BACKGROUND_COLOR = RGB(44, 62, 80); // The background color of the game window.
-constexpr COLORREF SNAKE_COLOR = RGB(236, 240, 241);   // The color of the snake.
-constexpr COLORREF FRUIT_COLOR = RGB(192, 57, 43);     // The color of the fruit.
+constexpr COLORREF BACKGROUND_COLOR = RGB(44, 62, 80); ///< The background color of the game window.
+constexpr COLORREF SNAKE_COLOR = RGB(236, 240, 241);   ///< The color of the snake.
+constexpr COLORREF FRUIT_COLOR = RGB(192, 57, 43);     ///< The color of the fruit.
 
 #endif
