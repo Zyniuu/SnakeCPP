@@ -14,16 +14,18 @@ add_subdirectory(googletest)
 set(TEST_SOURCES
     GameObjects/TestSnake.cpp
     GameObjects/TestFruit.cpp
+    Controllers/TestGameController.cpp
     tests.cpp
 )
 
 # Create the test executable
 add_executable(${PROJECT_NAME} ${TEST_SOURCES})
 
-# Include directories for headers (modern approach)
+# Include directories for headers
 target_include_directories(${PROJECT_NAME} PRIVATE
     ../SnakeCPP/Base/Constants
     ../SnakeCPP/Base/Controllers/Renderer/Common
+    ../SnakeCPP/Base/Controllers/Renderer/MockRenderer
     ../SnakeCPP/Base/Controllers/Renderer/WindowRenderer
     ../SnakeCPP/Base/Controllers/GameController
     ../SnakeCPP/GameObjects/Common
@@ -31,9 +33,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ../SnakeCPP/GameObjects/Snake
 )
 
-# Add library for the main project (if not done in the main CMakeLists.txt)
+# Add library for the main project
 add_library(SnakeCPP
-    ../SnakeCPP/main.cpp
     ../SnakeCPP/Base/Controllers/GameController/GameController.cpp
     ../SnakeCPP/Base/Controllers/Renderer/WindowRenderer/WindowRenderer.cpp
     ../SnakeCPP/GameObjects/Snake/Snake.cpp
