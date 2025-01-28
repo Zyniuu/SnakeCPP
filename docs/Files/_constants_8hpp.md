@@ -1,8 +1,3 @@
----
-title: Base/Constants/Constants.hpp
-
----
-
 # Base/Constants/Constants.hpp
 
 

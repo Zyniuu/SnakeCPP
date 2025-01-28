@@ -1,8 +1,3 @@
----
-title: main.cpp
-
----
-
 # main.cpp
 
 

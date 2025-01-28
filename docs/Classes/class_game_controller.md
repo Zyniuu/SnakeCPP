@@ -1,9 +1,3 @@
----
-title: GameController
-summary: Manages the logic of the game, including the snake, fruit, and collisions. 
-
----
-
 # GameController
 
 

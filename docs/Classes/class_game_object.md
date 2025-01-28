@@ -1,9 +1,3 @@
----
-title: GameObject
-summary: Represents a base class for drawable objects in the game. 
-
----
-
 # GameObject
 
 

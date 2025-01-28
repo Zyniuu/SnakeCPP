@@ -1,9 +1,3 @@
----
-title: WindowRenderer
-summary: Handles the window rendering logic. 
-
----
-
 # WindowRenderer
 
 

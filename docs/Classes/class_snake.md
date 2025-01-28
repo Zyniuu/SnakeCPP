@@ -1,9 +1,3 @@
----
-title: Snake
-summary: Represents the snake in the game. 
-
----
-
 # Snake
 
 

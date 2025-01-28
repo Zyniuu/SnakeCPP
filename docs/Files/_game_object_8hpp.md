@@ -1,8 +1,3 @@
----
-title: GameObjects/Common/GameObject.hpp
-
----
-
 # GameObjects/Common/GameObject.hpp
 
 
