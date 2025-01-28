@@ -118,13 +118,13 @@ std::pair<int, int> Snake::adjustHead(const int &windowWidth, const int &windowH
     std::pair<int, int> head = getHead();
 
     // If the new position exceeds the window boundaries, wrap around to the opposite side.
-    if (head.first < 0)
+    if (head.first + m_dx < 0)
         return std::make_pair(windowWidth - m_width, head.second);
-    if (head.first >= windowWidth)
+    if (head.first + m_dx >= windowWidth)
         return std::make_pair(0, head.second);
-    if (head.second < 0)
+    if (head.second + m_dy < 0)
         return std::make_pair(head.first, windowHeight - m_height);
-    if (head.second >= windowHeight)
+    if (head.second + m_dy >= windowHeight)
         return std::make_pair(head.first, 0);
     return std::make_pair(head.first + m_dx, head.second + m_dy);
 }
