@@ -1,8 +1,3 @@
----
-title: GameObjects/Fruit/Fruit.cpp
-
----
-
 # GameObjects/Fruit/Fruit.cpp
 
 

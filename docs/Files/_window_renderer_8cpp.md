@@ -1,8 +1,3 @@
----
-title: Base/Controllers/Renderer/WindowRenderer/WindowRenderer.cpp
-
----
-
 # Base/Controllers/Renderer/WindowRenderer/WindowRenderer.cpp
 
 

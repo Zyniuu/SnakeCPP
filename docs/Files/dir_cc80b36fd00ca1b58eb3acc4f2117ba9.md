@@ -1,8 +1,3 @@
----
-title: Base/Window
-
----
-
 # Base/Window
 
 

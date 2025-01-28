@@ -1,8 +1,3 @@
----
-title: GameObjects/Fruit
-
----
-
 # GameObjects/Fruit
 
 

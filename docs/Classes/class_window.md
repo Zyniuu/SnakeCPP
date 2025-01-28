@@ -1,9 +1,3 @@
----
-title: Window
-summary: Represents the game window. 
-
----
-
 # Window
 
 

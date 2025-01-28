@@ -1,8 +1,3 @@
----
-title: Base/Controllers/Renderer/Common/Renderer.hpp
-
----
-
 # Base/Controllers/Renderer/Common/Renderer.hpp
 
 

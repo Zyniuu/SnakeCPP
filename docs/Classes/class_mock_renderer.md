@@ -1,9 +1,3 @@
----
-title: MockRenderer
-summary: Mock class used for testing. 
-
----
-
 # MockRenderer
 
 

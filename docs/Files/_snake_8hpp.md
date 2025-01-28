@@ -1,8 +1,3 @@
----
-title: GameObjects/Snake/Snake.hpp
-
----
-
 # GameObjects/Snake/Snake.hpp
 
 

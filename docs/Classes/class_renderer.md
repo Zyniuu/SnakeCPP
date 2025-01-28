@@ -1,9 +1,3 @@
----
-title: Renderer
-summary: Abstracts rendering logic to allow testing. 
-
----
-
 # Renderer
 
 

@@ -1,8 +1,3 @@
----
-title: Base/Controllers/Renderer/MockRenderer/MockRenderer.hpp
-
----
-
 # Base/Controllers/Renderer/MockRenderer/MockRenderer.hpp
 
 
