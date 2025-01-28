@@ -31,8 +31,8 @@
 class WindowRenderer : public Renderer
 {
 private:
-    HDC m_hdc;                                      // Device context to draw on.
-    std::unordered_map<COLORREF, HBRUSH> m_brushes; // Collection of brushes for different colors.
+    HDC m_hdc;                                      ///< Device context to draw on.
+    std::unordered_map<COLORREF, HBRUSH> m_brushes; ///< Collection of brushes for different colors.
 
 public:
     /**

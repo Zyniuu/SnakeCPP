@@ -32,8 +32,8 @@
 class GameObject
 {
 protected:
-    int m_width;  // The width of the object.
-    int m_height; // The height of the object.
+    int m_width;  ///< The width of the object.
+    int m_height; ///< The height of the object.
 
     /**
      * @brief A custom hash function for pairs.

@@ -30,7 +30,7 @@
 class Fruit : public GameObject
 {
 private:
-    int m_x, m_y; // The position of the fruit.
+    int m_x, m_y; ///< The position of the fruit.
 
 public:
     /**

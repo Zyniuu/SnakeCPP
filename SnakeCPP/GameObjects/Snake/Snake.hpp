@@ -30,11 +30,11 @@
 class Snake : public GameObject
 {
 private:
-    std::deque<std::pair<int, int>> m_body;                      // The body of the snake as a deque of positions.
-    std::unordered_set<std::pair<int, int>, pairHash> m_bodySet; // A set for quick collision detection.
-    int m_dx, m_dy;                                              // The movement direction of the snake.
-    bool m_isGrowing;                                            // Whether the snake is growing.
-    bool m_isCollided;                                           // Whether the snake has collided with itself.
+    std::deque<std::pair<int, int>> m_body;                      ///< The body of the snake as a deque of positions.
+    std::unordered_set<std::pair<int, int>, pairHash> m_bodySet; ///< A set for quick collision detection.
+    int m_dx, m_dy;                                              ///< The movement direction of the snake.
+    bool m_isGrowing;                                            ///< Whether the snake is growing.
+    bool m_isCollided;                                           ///< Whether the snake has collided with itself.
 
 public:
     /**
