@@ -7,27 +7,27 @@ Represents a base class for drawable objects in the game.  [More...](#detailed-d
 
 `#include <GameObject.hpp>`
 
-Inherited by [Fruit](Classes/class_fruit.md), [Snake](Classes/class_snake.md)
+Inherited by [Fruit](class_fruit.md), [Snake](class_snake.md)
 
 ## Protected Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[pairHash](Classes/struct_game_object_1_1pair_hash.md)** <br>A custom hash function for pairs.  |
+| struct | **[pairHash](struct_game_object_1_1pair_hash.md)** <br>A custom hash function for pairs.  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[GameObject](Classes/class_game_object.md#function-gameobject)**(const int & width, const int & height)<br>Constructs a [GameObject](Classes/class_game_object.md).  |
-| virtual void | **[draw](Classes/class_game_object.md#function-draw)**(class [Renderer](Classes/class_renderer.md) & renderer, const COLORREF & color) =0<br>Pure virtual function to draw the object on the screen.  |
+| | **[GameObject](class_game_object.md#function-gameobject)**(const int & width, const int & height)<br>Constructs a [GameObject](class_game_object.md).  |
+| virtual void | **[draw](class_game_object.md#function-draw)**(class [Renderer](class_renderer.md) & renderer, const COLORREF & color) =0<br>Pure virtual function to draw the object on the screen.  |
 
 ## Protected Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[m_width](Classes/class_game_object.md#variable-m-width)** <br>The width of the object.  |
-| int | **[m_height](Classes/class_game_object.md#variable-m-height)** <br>The height of the object.  |
+| int | **[m_width](class_game_object.md#variable-m-width)** <br>The width of the object.  |
+| int | **[m_height](class_game_object.md#variable-m-height)** <br>The height of the object.  |
 
 ## Detailed Description
 
@@ -50,7 +50,7 @@ inline GameObject(
 )
 ```
 
-Constructs a [GameObject](Classes/class_game_object.md). 
+Constructs a [GameObject](class_game_object.md). 
 
 **Parameters**: 
 
@@ -71,11 +71,11 @@ Pure virtual function to draw the object on the screen.
 
 **Parameters**: 
 
-  * **renderer** [Renderer](Classes/class_renderer.md) used to draw on the window. 
+  * **renderer** [Renderer](class_renderer.md) used to draw on the window. 
   * **color** Color of the game object. 
 
 
-**Reimplemented by**: [Fruit::draw](Classes/class_fruit.md#function-draw), [Snake::draw](Classes/class_snake.md#function-draw)
+**Reimplemented by**: [Fruit::draw](class_fruit.md#function-draw), [Snake::draw](class_snake.md#function-draw)
 
 
 ## Protected Attributes Documentation
