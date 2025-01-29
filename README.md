@@ -9,6 +9,7 @@ This project is a C++ implementation of the classic Snake game using WinAPI, des
 * User input detection (arrow keys)
 * Random fruit generation
 * Collision detection
+* Snake appears on the opposite side of the window when reaching the border
 * Double buffering for smooth rendering
 * Animation loop running in a seperate thread so the game doesn't 'freeze' when moving the window
 * Unit tests with Google Test
