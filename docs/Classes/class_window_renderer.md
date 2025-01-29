@@ -7,16 +7,16 @@ Handles the window rendering logic.  [More...](#detailed-description)
 
 `#include <WindowRenderer.hpp>`
 
-Inherits from [Renderer](Classes/class_renderer.md)
+Inherits from [Renderer](class_renderer.md)
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[WindowRenderer](Classes/class_window_renderer.md#function-windowrenderer)**(const HDC & hdc)<br>Constructs the window renderer.  |
-| | **[~WindowRenderer](Classes/class_window_renderer.md#function-~windowrenderer)**()<br>Releases recources of the renderer.  |
-| virtual void | **[clear](Classes/class_window_renderer.md#function-clear)**(const COLORREF & color) override<br>Clears the window with a specified background color.  |
-| virtual void | **[drawRectangle](Classes/class_window_renderer.md#function-drawrectangle)**(const int & x, const int & y, const int & width, const int & height, const COLORREF & color) override<br>Draws rectangle on the window with a specified color.  |
+| | **[WindowRenderer](class_window_renderer.md#function-windowrenderer)**(const HDC & hdc)<br>Constructs the window renderer.  |
+| | **[~WindowRenderer](class_window_renderer.md#function-~windowrenderer)**()<br>Releases recources of the renderer.  |
+| virtual void | **[clear](class_window_renderer.md#function-clear)**(const COLORREF & color) override<br>Clears the window with a specified background color.  |
+| virtual void | **[drawRectangle](class_window_renderer.md#function-drawrectangle)**(const int & x, const int & y, const int & width, const int & height, const COLORREF & color) override<br>Draws rectangle on the window with a specified color.  |
 
 ## Detailed Description
 
@@ -66,10 +66,10 @@ Clears the window with a specified background color.
 
 **Parameters**: 
 
-  * **color** [Window](Classes/class_window.md) background color. 
+  * **color** [Window](class_window.md) background color. 
 
 
-**Reimplements**: [Renderer::clear](Classes/class_renderer.md#function-clear)
+**Reimplements**: [Renderer::clear](class_renderer.md#function-clear)
 
 
 ### function drawRectangle
@@ -95,4 +95,4 @@ Draws rectangle on the window with a specified color.
   * **color** Color of the rectangle 
 
 
-**Reimplements**: [Renderer::drawRectangle](Classes/class_renderer.md#function-drawrectangle)
+**Reimplements**: [Renderer::drawRectangle](class_renderer.md#function-drawrectangle)

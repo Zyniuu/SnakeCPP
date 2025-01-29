@@ -7,14 +7,14 @@ Abstracts rendering logic to allow testing.  [More...](#detailed-description)
 
 `#include <Renderer.hpp>`
 
-Inherited by [MockRenderer](Classes/class_mock_renderer.md), [WindowRenderer](Classes/class_window_renderer.md)
+Inherited by [MockRenderer](class_mock_renderer.md), [WindowRenderer](class_window_renderer.md)
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| virtual void | **[clear](Classes/class_renderer.md#function-clear)**(const COLORREF & color) =0 |
-| virtual void | **[drawRectangle](Classes/class_renderer.md#function-drawrectangle)**(const int & x, const int & y, const int & width, const int & height, const COLORREF & color) =0 |
+| virtual void | **[clear](class_renderer.md#function-clear)**(const COLORREF & color) =0 |
+| virtual void | **[drawRectangle](class_renderer.md#function-drawrectangle)**(const int & x, const int & y, const int & width, const int & height, const COLORREF & color) =0 |
 
 ## Detailed Description
 
@@ -37,7 +37,7 @@ virtual void clear(
 ```
 
 
-**Reimplemented by**: [MockRenderer::clear](Classes/class_mock_renderer.md#function-clear), [WindowRenderer::clear](Classes/class_window_renderer.md#function-clear)
+**Reimplemented by**: [MockRenderer::clear](class_mock_renderer.md#function-clear), [WindowRenderer::clear](class_window_renderer.md#function-clear)
 
 
 ### function drawRectangle
@@ -53,5 +53,5 @@ virtual void drawRectangle(
 ```
 
 
-**Reimplemented by**: [MockRenderer::drawRectangle](Classes/class_mock_renderer.md#function-drawrectangle), [WindowRenderer::drawRectangle](Classes/class_window_renderer.md#function-drawrectangle)
+**Reimplemented by**: [MockRenderer::drawRectangle](class_mock_renderer.md#function-drawrectangle), [WindowRenderer::drawRectangle](class_window_renderer.md#function-drawrectangle)
 

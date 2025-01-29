@@ -7,21 +7,21 @@ Mock class used for testing.  [More...](#detailed-description)
 
 `#include <MockRenderer.hpp>`
 
-Inherits from [Renderer](Classes/class_renderer.md)
+Inherits from [Renderer](class_renderer.md)
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| virtual void | **[clear](Classes/class_mock_renderer.md#function-clear)**(const COLORREF & color) |
-| virtual void | **[drawRectangle](Classes/class_mock_renderer.md#function-drawrectangle)**(const int & x, const int & y, const int & width, const int & height, const COLORREF & color) override |
+| virtual void | **[clear](class_mock_renderer.md#function-clear)**(const COLORREF & color) |
+| virtual void | **[drawRectangle](class_mock_renderer.md#function-drawrectangle)**(const int & x, const int & y, const int & width, const int & height, const COLORREF & color) override |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[drawCalls](Classes/class_mock_renderer.md#variable-drawcalls)**  |
-| int | **[clearCalls](Classes/class_mock_renderer.md#variable-clearcalls)**  |
+| int | **[drawCalls](class_mock_renderer.md#variable-drawcalls)**  |
+| int | **[clearCalls](class_mock_renderer.md#variable-clearcalls)**  |
 
 ## Detailed Description
 
@@ -44,7 +44,7 @@ inline virtual void clear(
 ```
 
 
-**Reimplements**: [Renderer::clear](Classes/class_renderer.md#function-clear)
+**Reimplements**: [Renderer::clear](class_renderer.md#function-clear)
 
 
 ### function drawRectangle
@@ -60,7 +60,7 @@ inline virtual void drawRectangle(
 ```
 
 
-**Reimplements**: [Renderer::drawRectangle](Classes/class_renderer.md#function-drawrectangle)
+**Reimplements**: [Renderer::drawRectangle](class_renderer.md#function-drawrectangle)
 
 
 ## Public Attributes Documentation

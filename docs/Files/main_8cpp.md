@@ -6,7 +6,7 @@
 
 |                | Name           |
 | -------------- | -------------- |
-| int WINAPI | **[WinMain](Files/main_8cpp.md#function-winmain)**(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) |
+| int WINAPI | **[WinMain](main_8cpp.md#function-winmain)**(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) |
 
 
 ## Functions Documentation
