@@ -6,13 +6,13 @@
 
 ## Requirements
 
-To compile this project you will need two things:
+To compile this project you will need three things:
 
 * CMake
 * Makefile
 * C++ compiler (g++)
 
-Both must be added to the system path to be able to execute the next commands.
+All must be added to the system path to be able to execute the next commands.
 
 ## Compile the game
 
