@@ -6,14 +6,14 @@
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[WINDOW_WIDTH](Files/_constants_8hpp.md#variable-window-width)** <br>The width of the game window in pixels.  |
-| int | **[WINDOW_HEIGHT](Files/_constants_8hpp.md#variable-window-height)** <br>The height of the game window in pixels.  |
-| int | **[ROWS](Files/_constants_8hpp.md#variable-rows)** <br>The number of rows in the game grid.  |
-| int | **[COLS](Files/_constants_8hpp.md#variable-cols)** <br>The number of columns in the game grid.  |
-| int | **[FPS](Files/_constants_8hpp.md#variable-fps)** <br>The frame rate of the game in frames per second.  |
-| COLORREF | **[BACKGROUND_COLOR](Files/_constants_8hpp.md#variable-background-color)** <br>The background color of the game window.  |
-| COLORREF | **[SNAKE_COLOR](Files/_constants_8hpp.md#variable-snake-color)** <br>The color of the snake.  |
-| COLORREF | **[FRUIT_COLOR](Files/_constants_8hpp.md#variable-fruit-color)** <br>The color of the fruit.  |
+| int | **[WINDOW_WIDTH](_constants_8hpp.md#variable-window-width)** <br>The width of the game window in pixels.  |
+| int | **[WINDOW_HEIGHT](_constants_8hpp.md#variable-window-height)** <br>The height of the game window in pixels.  |
+| int | **[ROWS](_constants_8hpp.md#variable-rows)** <br>The number of rows in the game grid.  |
+| int | **[COLS](_constants_8hpp.md#variable-cols)** <br>The number of columns in the game grid.  |
+| int | **[FPS](_constants_8hpp.md#variable-fps)** <br>The frame rate of the game in frames per second.  |
+| COLORREF | **[BACKGROUND_COLOR](_constants_8hpp.md#variable-background-color)** <br>The background color of the game window.  |
+| COLORREF | **[SNAKE_COLOR](_constants_8hpp.md#variable-snake-color)** <br>The color of the snake.  |
+| COLORREF | **[FRUIT_COLOR](_constants_8hpp.md#variable-fruit-color)** <br>The color of the fruit.  |
 
 
 
