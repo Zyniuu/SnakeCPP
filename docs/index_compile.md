@@ -2,7 +2,7 @@
 
 * **[Requirements](#requirements)**
 * **[Compile the game](#compile-the-game)**
-* **[Compile the unit tests](#compile-the-unit-tests)**
+* **[Compile unit tests](#compile-the-unit-tests)**
 
 ## Requirements
 
