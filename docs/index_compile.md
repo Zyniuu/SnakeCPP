@@ -2,7 +2,7 @@
 
 * **[Requirements](#requirements)**
 * **[Compile the game](#compile-the-game)**
-* **[Compile unit tests](#compile-the-unit-tests)**
+* **[Compile unit tests](#compile-unit-tests)**
 
 ## Requirements
 
@@ -42,7 +42,7 @@ make
 
 The SnakeCPP.exe executable file will be created and is ready to be run. The remaining files and folders that were created as a result of the 'cmake' command can be discarded as they are not needed for running the .exe file.
 
-## Compile the unit tests
+## Compile unit tests
 
 As with compiling the game, first create a new folder and go to it. Again, I chose the name 'build'.
 
