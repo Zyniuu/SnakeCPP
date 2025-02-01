@@ -34,8 +34,8 @@ void Snake::update(const int &windowWidth, const int &windowHeight)
     // Calculate the new head position, considering window boundaries.
     std::pair<int, int> newHead = adjustHead(windowWidth, windowHeight);
 
-    // Check if the new head collides with the body.
-    if (m_bodySet.count(newHead) > 0)
+    // Check if the new head collides with the body (ignore tail collision).
+    if (m_bodySet.count(newHead) > 0 && newHead != m_body.back())
         m_isCollided = true;
 
     // Add the new head position to the front of the snake's body.
